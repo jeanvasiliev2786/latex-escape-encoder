@@ -28,3 +28,10 @@ The trade-off: this library treats input as literal characters, not LaTeX struct
 `escapeLatex` is not idempotent. Running it twice on the same string doubles every backslash, because the backslashes inserted on the first pass are themselves literal characters on the second pass. If you need to escape text that may already be partially escaped, escape exactly once at the boundary where untrusted text enters your document.
 
 `encodeUnicode` maps a curated set of Western punctuation and accented Latin characters. Unmapped characters (including emoji and most non-Latin scripts) are returned unchanged. If you need exhaustive Unicode coverage, pair this with a dedicated fontspec/XeTeX setup instead.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
