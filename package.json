@@ -1,6 +1,6 @@
 {
   "name": "latex-escape-encoder",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Escapes and unescapes LaTeX special characters and maps Unicode to LaTeX command sequences.",
   "type": "module",
   "main": "src/index.js",
